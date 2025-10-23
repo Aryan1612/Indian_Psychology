@@ -320,33 +320,40 @@ function animateWaves(canvasId, type) {
     const baseAmplitude = 18;
 
     if (type === 'harmonious') {
-        sheathOrder.forEach((key, i) => {
-            const freq = baseFreq - (sheathOrder.length - 1 - i) * freqDecrement;
-            waves.push({
-                offset: -60 + i * 30, // bottom (Ananda) starts lower
-                amplitude: baseAmplitude,
-                frequency: freq,
-                phase: 0, // all in-phase
-                color: colors[key],
-                speed: 0.03
-            });
+    const sharedFrequency = 0.028; // single shared frequency for perfect phase alignment
+    sheathOrder.forEach((key, i) => {
+        // Amplitude increases upward (bottom → top)
+        const amplitudeGrowth = baseAmplitude * (0.4 + i * 0.35);
+        
+        waves.push({
+            offset: -80 + i * 35,
+            amplitude: amplitudeGrowth,
+            frequency: sharedFrequency, // identical for all
+            phase: 0,                   // identical phase for all
+            color: colors[key],
+            speed: 0.03                 // uniform motion speed
         });
-    } 
-    
-    else if (type === 'partial') {
-        sheathOrder.forEach((key, i) => {
-            const freq = baseFreq - (sheathOrder.length - 1 - i) * freqDecrement;
-            const inPhase = i >= 3; // upper layers (Vijnana, Ananda) more stable
-            waves.push({
-                offset: -60 + i * 30,
-                amplitude: inPhase ? baseAmplitude : baseAmplitude + Math.random() * 5,
-                frequency: inPhase ? freq : freq * (0.9 + Math.random() * 0.2),
-                phase: inPhase ? 0 : Math.random() * Math.PI * 2,
-                color: colors[key],
-                speed: inPhase ? 0.03 : 0.035 + Math.random() * 0.015
-            });
+    });
+}
+
+else if (type === 'partial') {
+    const sharedFrequency = 0.028; // base frequency still shared
+    sheathOrder.forEach((key, i) => {
+        const amplitudeGrowth = baseAmplitude * (0.4 + i * 0.35);
+
+        // small random phase offsets for lower koshas only
+        const phaseOffset = i <= 2 ? Math.random() * 0.4 : 0;
+
+        waves.push({
+            offset: -80 + i * 35,
+            amplitude: amplitudeGrowth,
+            frequency: sharedFrequency,
+            phase: phaseOffset,
+            color: colors[key],
+            speed: 0.03
         });
-    } 
+    });
+}
     
     else if (type === 'misaligned') {
         sheathOrder.forEach((key, i) => {
