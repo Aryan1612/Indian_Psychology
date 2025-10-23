@@ -294,11 +294,11 @@ function animateWaves(canvasId, type) {
     const centerY = height / 2;
 
     const colors = {
-        ananda: '#FFD700',
-        vijnana: '#8A2BE2',
-        mano: '#1E90FF',
-        prana: '#32CD32',
-        anna: '#CD5C5C'
+        ananda: '#FFD700',   // Gold (Bliss)
+        vijnana: '#8A2BE2', // Violet (Knowledge)
+        mano: '#1E90FF',    // Blue (Mind)
+        prana: '#32CD32',   // Green (Energy)
+        anna: '#CD5C5C'     // Red (Body)
     };
 
     if (!window.waves) window.waves = {};
@@ -310,88 +310,96 @@ function animateWaves(canvasId, type) {
     }
     if (!window.animationFrameIds) window.animationFrameIds = {};
 
-    const baseFreq = 0.02;
-    let i = 0;
+    // --- FLIPPED order: top to bottom visually is Anna → Prana → Mano → Vijnana → Ananda
+    // But we draw from Ananda (lowest y) to Anna (highest y)
+    const sheathOrder = ["ananda", "vijnana", "mano", "prana", "anna"];
+
+    // Frequency decreases as we go upward (Annamaya highest, Ananda lowest)
+    const baseFreq = 0.035; 
+    const freqDecrement = 0.006;
+    const baseAmplitude = 18;
 
     if (type === 'harmonious') {
-        for (const color of Object.values(colors)) {
+        sheathOrder.forEach((key, i) => {
+            const freq = baseFreq - (sheathOrder.length - 1 - i) * freqDecrement;
             waves.push({
-                offset: -60 + i * 30,
-                amplitude: 18,
-                frequency: baseFreq * (1.6 - i * 0.35),
-                phase: 0,
-                color,
+                offset: -60 + i * 30, // bottom (Ananda) starts lower
+                amplitude: baseAmplitude,
+                frequency: freq,
+                phase: 0, // all in-phase
+                color: colors[key],
                 speed: 0.03
             });
-            i++;
-        }
-    } else if (type === 'partial') {
-        for (const colorKey in colors) {
-            const color = colors[colorKey];
-            const synced = i < 2;
+        });
+    } 
+    
+    else if (type === 'partial') {
+        sheathOrder.forEach((key, i) => {
+            const freq = baseFreq - (sheathOrder.length - 1 - i) * freqDecrement;
+            const inPhase = i >= 3; // upper layers (Vijnana, Ananda) more stable
             waves.push({
                 offset: -60 + i * 30,
-                amplitude: synced ? 16 : 20 + Math.random() * 5,
-                frequency: baseFreq * (1.6 - i * 0.35) * (synced ? 1 : (0.9 + Math.random() * 0.3)),
-                phase: synced ? 0 : Math.random() * Math.PI * 2,
-                color,
-                speed: synced ? 0.03 : 0.04 + Math.random() * 0.02
+                amplitude: inPhase ? baseAmplitude : baseAmplitude + Math.random() * 5,
+                frequency: inPhase ? freq : freq * (0.9 + Math.random() * 0.2),
+                phase: inPhase ? 0 : Math.random() * Math.PI * 2,
+                color: colors[key],
+                speed: inPhase ? 0.03 : 0.035 + Math.random() * 0.015
             });
-            i++;
-        }
-    } else if (type === 'misaligned') {
-        for (const colorKey in colors) {
-            const color = colors[colorKey];
-            const calm = i < 2;
-
-            let waveProps = {
-                offset: -60 + i * 30,
-                frequency: baseFreq * (1.6 - i * 0.35) * (calm ? 1 : (0.8 + Math.random() * 1.5)),
-                phase: calm ? 0 : Math.random() * Math.PI * 4,
-                color,
-                speed: calm ? 0.02 : 0.05 + Math.random() * 0.03
-            };
-
+        });
+    } 
+    
+    else if (type === 'misaligned') {
+        sheathOrder.forEach((key, i) => {
+            const freq = baseFreq - (sheathOrder.length - 1 - i) * freqDecrement;
+            const calm = i < 2; // Ananda & Vijnana calm
             if (calm) {
-                waveProps.amplitude = 15;
+                waves.push({
+                    offset: -60 + i * 30,
+                    amplitude: baseAmplitude - 3,
+                    frequency: freq,
+                    phase: Math.random() * 0.5,
+                    color: colors[key],
+                    speed: 0.02
+                });
             } else {
-                waveProps.baseAmplitude = 20 + Math.random() * 5;
-                waveProps.ampModAmount = 8 + Math.random() * 12;
-                waveProps.ampModSpeed = 0.03 + Math.random() * 0.05;
-                waveProps.ampPhase = Math.random() * Math.PI * 2;
+                waves.push({
+                    offset: -60 + i * 30,
+                    baseAmplitude: baseAmplitude + Math.random() * 5,
+                    ampModAmount: 6 + Math.random() * 10,
+                    ampModSpeed: 0.03 + Math.random() * 0.04,
+                    ampPhase: Math.random() * Math.PI * 2,
+                    frequency: freq * (0.8 + Math.random() * 0.8),
+                    phase: Math.random() * Math.PI * 4,
+                    color: colors[key],
+                    speed: 0.04 + Math.random() * 0.03
+                });
             }
-
-            waves.push(waveProps);
-            i++;
-        }
+        });
     }
 
     function drawFrame() {
         ctx.clearRect(0, 0, width, height);
-
         for (const wave of waves) {
             ctx.beginPath();
             ctx.strokeStyle = wave.color;
             ctx.lineWidth = 2.5;
 
-            let currentAmplitude;
-            if (wave.baseAmplitude !== undefined) {
-                currentAmplitude = wave.baseAmplitude + (Math.sin(wave.ampPhase) * wave.ampModAmount);
+            let currentAmplitude = wave.amplitude !== undefined
+                ? wave.amplitude
+                : wave.baseAmplitude + Math.sin(wave.ampPhase) * wave.ampModAmount;
+
+            if (wave.ampPhase !== undefined)
                 wave.ampPhase += wave.ampModSpeed;
-            } else {
-                currentAmplitude = wave.amplitude;
-            }
 
             for (let x = 0; x < width; x++) {
-                const y = centerY + wave.offset + Math.sin(x * wave.frequency + wave.phase) * currentAmplitude;
+                const y = centerY + wave.offset +
+                    Math.sin(x * wave.frequency + wave.phase) * currentAmplitude;
                 if (x === 0) ctx.moveTo(x, y);
                 else ctx.lineTo(x, y);
             }
             ctx.stroke();
-
             wave.phase += wave.speed;
         }
-
         window.animationFrameIds[canvasId] = requestAnimationFrame(drawFrame);
     }
 
