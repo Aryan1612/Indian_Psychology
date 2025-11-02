@@ -1,433 +1,1011 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
+    <!-- Ensures proper scaling on mobile devices -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Pancha Kosha Alignment</title>
+
     <style>
+
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
         }
+
         
+
         body {
+
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 30px 20px;
+
+            /* Added padding for better mobile spacing */
+
+            padding: 20px 10px;
+
             min-height: 100vh;
+
         }
+
         
+
         .container {
+
             max-width: 1400px;
+
             margin: 0 auto;
+
             background: white;
+
             border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 2.2em;
-            font-weight: 600;
-        }
-        
-        .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 40px;
-            font-size: 1.1em;
-        }
-        
-        .main-layout {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .sheaths-legend {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            padding: 20px 0;
-        }
-        
-        .sheath-label {
-            padding: 15px;
-            border-radius: 10px;
-            margin: 8px 0;
-            color: white;
-            font-weight: 500;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        /* --- NEW COLORS START --- */
-        .sheath-label.ananda { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); } /* Gold to Orange */
-        .sheath-label.vijnana { background: linear-gradient(135deg, #8A2BE2 0%, #DA70D6 100%); } /* Violet to Orchid */
-        .sheath-label.mano { background: linear-gradient(135deg, #1E90FF 0%, #87CEEB 100%); } /* Dodger Blue to Sky Blue */
-        .sheath-label.prana { background: linear-gradient(135deg, #32CD32 0%, #00FA9A 100%); } /* Lime Green to Spring Green */
-        .sheath-label.anna { background: linear-gradient(135deg, #CD5C5C 0%, #F08080 100%); } /* Indian Red to Light Coral */
-        /* --- NEW COLORS END --- */
-        
-        .devanagari {
-            font-size: 0.9em;
-            display: block;
-            margin-bottom: 3px;
-        }
-        
-        .english {
-            font-size: 0.85em;
-            opacity: 0.9;
-        }
-        
-        .columns-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-        
-        .column {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        
-        .column-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .column-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-        
-        .column-caption {
-            font-size: 0.95em;
-            color: #7f8c8d;
-            font-style: italic;
-            line-height: 1.4;
-        }
-        
-        .wave-container {
-            background: white;
-            border-radius: 12px;
+
+            /* Adjusted padding for smaller screens */
+
             padding: 20px;
-            margin-bottom: 20px;
-            height: 300px;
+
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+
         }
+
         
-        canvas {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .characteristics, .consequences {
-            margin-bottom: 20px;
-        }
-        
-        .section-title {
-            font-weight: 600;
-            color: #34495e;
-            margin-bottom: 10px;
-            font-size: 1.05em;
-        }
-        
-        .text-content {
-            color: #5a6c7d;
-            line-height: 1.7;
-            font-size: 0.95em;
-        }
-        
-        .text-content li {
-            margin-bottom: 6px;
-        }
-        
-        .bottom-note {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
+
+        h1 {
+
             text-align: center;
-            line-height: 1.8;
+
+            color: #2c3e50;
+
+            margin-bottom: 15px;
+
+            /* Responsive font size */
+
+            font-size: clamp(1.8em, 5vw, 2.2em);
+
+            font-weight: 600;
+
+        }
+
+        
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #7f8c8d;
+
+            margin-bottom: 30px;
+
+            font-size: clamp(1em, 4vw, 1.1em);
+
+        }
+
+        
+
+        .main-layout {
+
+            display: grid;
+
+            /* Updated grid for responsiveness */
+
+            grid-template-columns: 1fr; /* Stack on mobile */
+
+            gap: 20px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+
+        /* --- Responsive Grid --- */
+
+        @media (min-width: 768px) {
+
+            .main-layout {
+
+                /* Side-by-side on larger screens */
+
+                grid-template-columns: 200px 1fr;
+
+                gap: 30px;
+
+            }
+
+            .container {
+
+                padding: 40px;
+
+            }
+
+        }
+
+        
+
+        .sheaths-legend {
+
+            display: flex;
+
+            /* Changed to row for mobile, wrap if needed */
+
+            flex-direction: row;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 10px 0;
+
+        }
+
+
+
+        @media (min-width: 768px) {
+
+            .sheaths-legend {
+
+                /* Back to column on desktop */
+
+                flex-direction: column;
+
+                justify-content: space-around;
+
+                padding: 20px 0;
+
+                gap: 0; /* Reset gap */
+
+            }
+
+        }
+
+        
+
+        .sheath-label {
+
+            padding: 12px 15px;
+
+            border-radius: 10px;
+
+            margin: 5px 0;
+
+            color: white;
+
+            font-weight: 500;
+
+            text-align: center;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+            /* Allow shrinking on mobile */
+
+            flex-grow: 1;
+
+            flex-basis: 150px;
+
+        }
+
+        
+
+        /* --- NEW COLORS START --- */
+
+        .sheath-label.ananda { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); } /* Gold to Orange */
+
+        .sheath-label.vijnana { background: linear-gradient(135deg, #8A2BE2 0%, #DA70D6 100%); } /* Violet to Orchid */
+
+        .sheath-label.mano { background: linear-gradient(135deg, #1E90FF 0%, #87CEEB 100%); } /* Dodger Blue to Sky Blue */
+
+        .sheath-label.prana { background: linear-gradient(135deg, #32CD32 0%, #00FA9A 100%); } /* Lime Green to Spring Green */
+
+        .sheath-label.anna { background: linear-gradient(135deg, #CD5C5C 0%, #F08080 100%); } /* Indian Red to Light Coral */
+
+        /* --- NEW COLORS END --- */
+
+        
+
+        .devanagari {
+
+            font-size: 0.9em;
+
+            display: block;
+
+            margin-bottom: 3px;
+
+        }
+
+        
+
+        .english {
+
+            font-size: 0.85em;
+
+            opacity: 0.9;
+
+        }
+
+        
+
+        .columns-grid {
+
+            display: grid;
+
+            /* Stack on mobile */
+
+            grid-template-columns: 1fr;
+
+            gap: 25px;
+
+        }
+
+
+
+        /* --- Responsive Grid --- */
+
+        @media (min-width: 1024px) {
+
+            .columns-grid {
+
+                /* 3 columns on desktop */
+
+                grid-template-columns: repeat(3, 1fr);
+
+            }
+
+        }
+
+        
+
+        .column {
+
+            background: #f8f9fa;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+            /* Add min-width to prevent squishing */
+
+            min-width: 280px;
+
+        }
+
+        
+
+        .column-header {
+
+            text-align: center;
+
+            margin-bottom: 20px;
+
+        }
+
+        
+
+        .column-title {
+
+            font-size: 1.4em;
+
+            font-weight: 600;
+
+            color: #2c3e50;
+
+            margin-bottom: 8px;
+
+        }
+
+        
+
+        .column-caption {
+
+            font-size: 0.95em;
+
+            color: #7f8c8d;
+
+            font-style: italic;
+
+            line-height: 1.4;
+
+        }
+
+        
+
+        .wave-container {
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            height: 300px;
+
+            /* Ensure canvas inside respects this container */
+
+            overflow: hidden;
+
+        }
+
+        
+
+        canvas {
+
+            /* Ensure canvas fills container */
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+        }
+
+        
+
+        .characteristics, .consequences {
+
+            margin-bottom: 20px;
+
+        }
+
+        
+
+        .section-title {
+
+            font-weight: 600;
+
+            color: #34495e;
+
+            margin-bottom: 10px;
+
             font-size: 1.05em;
+
+        }
+
+        
+
+        .text-content {
+
+            color: #5a6c7d;
+
+            line-height: 1.7;
+
+            font-size: 0.95em;
+
+        }
+
+        
+
+        .text-content li {
+
+            margin-bottom: 6px;
+
+        }
+
+        
+
+        .bottom-note {
+
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            color: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            line-height: 1.8;
+
+            font-size: 1.05em;
+
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+
         }
+
         
+
         .harmonious { border-top: 4px solid #27ae60; }
+
         .partial { border-top: 4px solid #f39c12; }
+
         .misaligned { border-top: 4px solid #e74c3c; }
+
     </style>
+
 </head>
+
 <body>
+
     <div class="container">
+
         <h1>Alignment of the Sheaths</h1>
+
         <div class="subtitle">Pancha Kosha in Indian Psychology</div>
+
         
+
         <div class="main-layout">
+
             <div class="sheaths-legend">
+
                 <div class="sheath-label ananda">
+
                     <span class="devanagari">आनन्दमय कोश</span>
+
                     <span class="english">Ānandamaya (Bliss)</span>
+
                 </div>
+
                 <div class="sheath-label vijnana">
+
                     <span class="devanagari">विज्ञानमय कोश</span>
+
                     <span class="english">Vijñānamaya (Knowledge)</span>
+
                 </div>
+
                 <div class="sheath-label mano">
+
                     <span class="devanagari">मनोमय कोश</span>
+
                     <span class="english">Manomaya (Mind)</span>
+
                 </div>
+
                 <div class="sheath-label prana">
+
                     <span class="devanagari">प्राणमय कोश</span>
+
                     <span class="english">Prāṇamaya (Vital Energy)</span>
+
                 </div>
+
                 <div class="sheath-label anna">
+
                     <span class="devanagari">अन्नमय कोश</span>
+
                     <span class="english">Annamaya (Physical Body)</span>
+
                 </div>
+
             </div>
+
             
+
             <div class="columns-grid">
+
                 <div class="column harmonious">
+
                     <div class="column-header">
+
                         <div class="column-title">A — Harmonious</div>
+
                         <div class="column-caption">"Mind, energy, and body are guided by knowledge and bliss"</div>
+
                     </div>
+
                     
+
                     <div class="wave-container">
+
                         <canvas id="harmonious-canvas"></canvas>
+
                     </div>
+
                     
+
                     <div class="characteristics">
+
                         <div class="section-title">Characteristics:</div>
+
                         <div class="text-content">
-                            Emotionally balanced, clear-thinking, grounded. Calm presence with inner confidence and compassion. Acts with purpose and awareness, unaffected by minor disturbances.
+
+                            Emotionally balanced, clear-thinking, grounded. Calm presence with inner confidence and compassion. Acts with purpose and awareness, unaffected by minor disturbances. Eats mindfully and moves regularly, stays hydrated and have a regular sleep cycle.
+
                         </div>
+
                     </div>
+
                     
-                    <div class="consequences">
+
+                    <div classs="consequences">
+
                         <div class="section-title">Consequences:</div>
+
                         <div class="text-content">
+
                             Deep inner peace, physical vitality, creativity, and resilience. Perfect harmony between thought, feeling, and action.
+
                         </div>
+
                     </div>
+
                 </div>
+
                 
+
                 <div class="column partial">
+
                     <div class="column-header">
+
                         <div class="column-title">B — Partially Harmonious</div>
+
                         <div class="column-caption">"Some alignment exists, but the mind and energy fluctuate"</div>
+
                     </div>
+
                     
+
                     <div class="wave-container">
+
                         <canvas id="partial-canvas"></canvas>
+
                     </div>
+
                     
+
                     <div class="characteristics">
+
                         <div class="section-title">Characteristics:</div>
+
                         <div class="text-content">
-                            Self-aware but inconsistent in applying insight. Mood swings, scattered attention, and emotional reactivity. Alternates between clarity and confusion.
+
+                            Self-aware but inconsistent in applying insight. Mood swings, scattered attention, and emotional reactivity. Alternates between clarity and confusion. Variable energy levels, occasional digestive issues, inconsistent movement, tendency towards minor ailments, body awareness is partial.
+
                         </div>
+
                     </div>
+
                     
+
                     <div class="consequences">
+
                         <div class="section-title">Consequences:</div>
+
                         <div class="text-content">
+
                             Occasional peace but easily disturbed by stress. Energy leakage, mild anxiety, fatigue, and unstable motivation.
+
                         </div>
+
                     </div>
+
                 </div>
+
                 
+
                 <div class="column misaligned">
+
                     <div class="column-header">
+
                         <div class="column-title">C — Misaligned</div>
+
                         <div class="column-caption">"Body, energy, and mind act independently, disconnected from higher awareness"</div>
+
                     </div>
+
                     
+
                     <div class="wave-container">
+
                         <canvas id="misaligned-canvas"></canvas>
+
                     </div>
+
                     
+
                     <div class="characteristics">
+
                         <div class="section-title">Characteristics:</div>
+
                         <div class="text-content">
-                            Restless, ego-driven, impulsive, emotionally turbulent. Prone to overthinking or apathy, lacks direction. Identifies only with physical or emotional self.
+
+                            Restless, ego-driven, impulsive, emotionally turbulent. Prone to overthinking or apathy, lacks direction. Identifies only with physical or emotional self. Falls sick easily, restless sleep patterns, weak digestion, poor adaptability.
+
                         </div>
+
                     </div>
+
                     
+
                     <div class="consequences">
+
                         <div class="section-title">Consequences:</div>
+
                         <div class="text-content">
+
                             Chronic stress, confusion, conflict, and dissatisfaction. Physical ailments, lack of purpose, and emotional instability.
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
         
+
         <div class="bottom-note">
+
             In Indian psychology, spiritual and psychological growth means progressively aligning the lower sheaths — body (Anna), energy (Prāṇa), and mind (Manas) — under the guidance of higher consciousness (Vijñāna and Ānanda). When fully aligned, a person experiences balance, wisdom, and bliss.
+
         </div>
+
     </div>
+
     
-    
-<script>
-function animateWaves(canvasId, type) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
 
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    <script>
 
-    const width = canvas.width;
-    const height = canvas.height;
-    const centerY = height / 2;
+    function animateWaves(canvasId, type) {
 
-    const colors = {
-        ananda: '#FFD700',   // Gold (Bliss)
-        vijnana: '#8A2BE2', // Violet (Knowledge)
-        mano: '#1E90FF',    // Blue (Mind)
-        prana: '#32CD32',   // Green (Energy)
-        anna: '#CD5C5C'     // Red (Body)
-    };
+        const canvas = document.getElementById(canvasId);
 
-    if (!window.waves) window.waves = {};
-    window.waves[canvasId] = [];
-    const waves = window.waves[canvasId];
+        // Check if canvas exists
 
-    if (window.animationFrameIds && window.animationFrameIds[canvasId]) {
-        cancelAnimationFrame(window.animationFrameIds[canvasId]);
-    }
-    if (!window.animationFrameIds) window.animationFrameIds = {};
+        if (!canvas) {
 
-    // --- FLIPPED order: top to bottom visually is Anna → Prana → Mano → Vijnana → Ananda
-    // But we draw from Ananda (lowest y) to Anna (highest y)
-    const sheathOrder = ["ananda", "vijnana", "mano", "prana", "anna"];
+            console.error('Canvas element not found:', canvasId);
 
-    // Frequency decreases as we go upward (Annamaya highest, Ananda lowest)
-    const baseFreq = 0.035; 
-    const freqDecrement = 0.006;
-    const baseAmplitude = 18;
+            return;
 
-    if (type === 'harmonious') {
-        sheathOrder.forEach((key, i) => {
-            const freq = baseFreq - (sheathOrder.length - 1 - i) * freqDecrement;
-            waves.push({
-                offset: -60 + i * 30, // bottom (Ananda) starts lower
-                amplitude: baseAmplitude,
-                frequency: freq,
-                phase: 0, // all in-phase
-                color: colors[key],
-                speed: 0.03
-            });
-        });
-    } 
-    
-    else if (type === 'partial') {
-        sheathOrder.forEach((key, i) => {
-            const freq = baseFreq - (sheathOrder.length - 1 - i) * freqDecrement;
-            const inPhase = i >= 3; // upper layers (Vijnana, Ananda) more stable
-            waves.push({
-                offset: -60 + i * 30,
-                amplitude: inPhase ? baseAmplitude : baseAmplitude + Math.random() * 5,
-                frequency: inPhase ? freq : freq * (0.9 + Math.random() * 0.2),
-                phase: inPhase ? 0 : Math.random() * Math.PI * 2,
-                color: colors[key],
-                speed: inPhase ? 0.03 : 0.035 + Math.random() * 0.015
-            });
-        });
-    } 
-    
-    else if (type === 'misaligned') {
-        sheathOrder.forEach((key, i) => {
-            const freq = baseFreq - (sheathOrder.length - 1 - i) * freqDecrement;
-            const calm = i < 2; // Ananda & Vijnana calm
-            if (calm) {
-                waves.push({
-                    offset: -60 + i * 30,
-                    amplitude: baseAmplitude - 3,
-                    frequency: freq,
-                    phase: Math.random() * 0.5,
-                    color: colors[key],
-                    speed: 0.02
-                });
-            } else {
-                waves.push({
-                    offset: -60 + i * 20,
-                    baseAmplitude: baseAmplitude + Math.random() * 110,
-                    ampModAmount: 6 + Math.random() * 10,
-                    ampModSpeed: 0.03 + Math.random() * 0.04,
-                    ampPhase: Math.random() * Math.PI * 2,
-                    frequency: freq * (0.8 + Math.random() * 0.8),
-                    phase: Math.random() * Math.PI * 4,
-                    color: colors[key],
-                    speed: 0.04 + Math.random() * 0.03
-                });
-            }
-        });
-    }
-
-    function drawFrame() {
-        ctx.clearRect(0, 0, width, height);
-        for (const wave of waves) {
-            ctx.beginPath();
-            ctx.strokeStyle = wave.color;
-            ctx.lineWidth = 2.5;
-
-            let currentAmplitude = wave.amplitude !== undefined
-                ? wave.amplitude
-                : wave.baseAmplitude + Math.sin(wave.ampPhase) * wave.ampModAmount;
-
-            if (wave.ampPhase !== undefined)
-                wave.ampPhase += wave.ampModSpeed;
-
-            for (let x = 0; x < width; x++) {
-                const y = centerY + wave.offset +
-                    Math.sin(x * wave.frequency + wave.phase) * currentAmplitude;
-                if (x === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            }
-            ctx.stroke();
-            wave.phase += wave.speed;
         }
-        window.animationFrameIds[canvasId] = requestAnimationFrame(drawFrame);
+
+        const ctx = canvas.getContext('2d');
+
+
+
+        // Check if container is visible. If not, retry.
+
+        if (canvas.offsetWidth === 0 || canvas.offsetHeight === 0) {
+
+            setTimeout(() => animateWaves(canvasId, type), 100);
+
+            return;
+
+        }
+
+
+
+        canvas.width = canvas.offsetWidth;
+
+        canvas.height = canvas.offsetHeight;
+
+
+
+        const width = canvas.width;
+
+        const height = canvas.height;
+
+        const centerY = height / 2;
+
+
+
+        const colors = {
+
+            ananda: '#FFD700',   // Gold
+
+            vijnana: '#8A2BE2', // Blue-Violet
+
+            mano: '#1E90FF',    // Dodger Blue
+
+            prana: '#32CD32',   // Lime Green
+
+            anna: '#CD5C5C'     // Indian Red
+
+        };
+
+
+
+
+
+        // Use global objects for waves and animation frame IDs
+
+        if (!window.waveAnimations) {
+
+            window.waveAnimations = {};
+
+        }
+
+        
+
+        // Cancel previous animation frame for this canvas
+
+        if (window.waveAnimations[canvasId] && window.waveAnimations[canvasId].frameId) {
+
+            cancelAnimationFrame(window.waveAnimations[canvasId].frameId);
+
+        }
+
+
+
+        // Store waves for this canvas
+
+        window.waveAnimations[canvasId] = { waves: [] };
+
+        const waves = window.waveAnimations[canvasId].waves;
+
+
+
+
+
+        if (type === 'harmonious') {
+
+            const baseFreq = 0.02;
+
+            let i = 0;
+
+            for (const color of Object.values(colors)) {
+
+                waves.push({
+
+                    offset: -60 + i * 30,
+
+                    amplitude: 18,
+
+                    frequency: baseFreq,
+
+                    phase: 0,
+
+                    color,
+
+                    speed: 0.03
+
+                });
+
+                i++;
+
+            }
+
+        } else if (type === 'partial') {
+
+            const baseFreq = 0.02;
+
+            let i = 0;
+
+            for (const colorKey in colors) {
+
+                const color = colors[colorKey];
+
+                let waveProps = {
+
+                    offset: -60 + i * 30,
+
+                    color,
+
+                };
+
+                if (i < 2) { // Ananda & Vijnana: Moderate Chaos
+
+                    waveProps.amplitude = 18 + (Math.random() - 0.5) * 4;
+
+                    waveProps.frequency = baseFreq + (Math.random() - 0.5) * 0.006;
+
+                    waveProps.phase = Math.random() * Math.PI;
+
+                    waveProps.speed = 0.03 + (Math.random() - 0.5) * 0.01;
+
+                } else { // Mano, Prana, Anna: High Chaos
+
+                    waveProps.amplitude = 20 + Math.random() * 5;
+
+                    waveProps.frequency = baseFreq * (0.9 + Math.random() * 0.3);
+
+                    waveProps.phase = Math.random() * Math.PI * 2;
+
+                    waveProps.speed = 0.04 + Math.random() * 0.02;
+
+                }
+
+                waves.push(waveProps);
+
+                i++;
+
+            }
+
+        } else if (type === 'misaligned') {
+
+            const baseFreq = 0.02;
+
+            let i = 0;
+
+            for (const colorKey in colors) {
+
+                const color = colors[colorKey];
+
+                let waveProps = {
+
+                    offset: -60 + i * 30,
+
+                    frequency: baseFreq * (0.8 + Math.random() * 1.5),
+
+                    phase: Math.random() * Math.PI * 4,
+
+                    color,
+
+                    speed: 0.05 + Math.random() * 0.03
+
+                };
+
+                waveProps.baseAmplitude = 20 + Math.random() * 5;
+
+                waveProps.ampModAmount = 8 + Math.random() * 12;
+
+                waveProps.ampModSpeed = 0.03 + Math.random() * 0.05;
+
+                waveProps.ampPhase = Math.random() * Math.PI * 2;
+
+                waves.push(waveProps);
+
+                i++;
+
+            }
+
+        }
+
+
+
+        function drawFrame() {
+
+            // Check if canvas dimensions are valid
+
+            if(canvas.width <= 0 || canvas.height <= 0) {
+
+                 // Stop animation if canvas is not visible
+
+                cancelAnimationFrame(window.waveAnimations[canvasId].frameId);
+
+                return;
+
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+
+            for (const wave of waves) {
+
+                ctx.beginPath();
+
+                ctx.strokeStyle = wave.color;
+
+                ctx.lineWidth = 2.5;
+
+
+
+                let currentAmplitude;
+
+                if (wave.baseAmplitude !== undefined) {
+
+                    currentAmplitude = wave.baseAmplitude + 
+
+                                       (Math.sin(wave.ampPhase) * wave.ampModAmount);
+
+                    wave.ampPhase += wave.ampModSpeed;
+
+                } else {
+
+                    currentAmplitude = wave.amplitude;
+
+                }
+
+
+
+                for (let x = 0; x < canvas.width; x++) {
+
+                    const y = centerY + wave.offset + 
+
+                              Math.sin(x * wave.frequency + wave.phase) * currentAmplitude; 
+
+                    
+
+                    if (x === 0) ctx.moveTo(x, y);
+
+                    else ctx.lineTo(x, y);
+
+                }
+
+                ctx.stroke();
+
+
+
+                wave.phase += wave.speed;
+
+            }
+
+
+
+            // Store the frame ID
+
+            window.waveAnimations[canvasId].frameId = requestAnimationFrame(drawFrame);
+
+        }
+
+
+
+        drawFrame();
+
     }
 
-    drawFrame();
-}
 
-animateWaves('harmonious-canvas', 'harmonious');
-animateWaves('partial-canvas', 'partial');
-animateWaves('misaligned-canvas', 'misaligned');
 
-function debounce(func, wait = 100) {
-    let timeout;
-    return function(...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            func.apply(this, args);
-        }, wait);
-    };
-}
+    // Debounce function to limit resize event firing
 
-const debouncedResize = debounce(() => {
-    animateWaves('harmonious-canvas', 'harmonious');
-    animateWaves('partial-canvas', 'partial');
-    animateWaves('misaligned-canvas', 'misaligned');
-}, 250);
+    function debounce(func, wait = 100) {
 
-window.addEventListener('resize', debouncedResize);
-</script>
+        let timeout;
+
+        return function(...args) {
+
+            clearTimeout(timeout);
+
+            timeout = setTimeout(() => {
+
+                func.apply(this, args);
+
+            }, wait);
+
+        };
+
+    }
+
+
+
+    // Function to initialize all animations
+
+    function startAllAnimations() {
+
+        animateWaves('harmonious-canvas', 'harmonious');
+
+        animateWaves('partial-canvas', 'partial');
+
+        animateWaves('misaligned-canvas', 'misaligned');
+
+    }
+
+
+
+    // Initial draw on page load
+
+    window.addEventListener('load', startAllAnimations);
+
+
+
+    // Handle resize
+
+    const debouncedResize = debounce(startAllAnimations, 250);
+
+    window.addEventListener('resize', debouncedResize);
+
+    
+
+    </script>
 
 </body>
+
 </html>
+
+
+
+could you make soe 
