@@ -2,10 +2,10 @@
 
 ## 🧠 Project by: Cognitive Resonance
 
-* Aryan Arora (Team Leader)
-* Kunal Patil
+* Aryan Arora
 * Flora
 * Himanshu
+* Kunal Patil
 * Prabhanjan
 * Saksham
 
@@ -15,7 +15,7 @@
 
 ## 💡 Project Overview
 
-This project is an interactive web-based infographic that explores the dual nature of social comparison, which we've termed **"The Comparison Virus."**
+This project is an interactive web-based infographic that serves as a **preliminary study and report** for our course. It explores the dual nature of social comparison, which we've termed **"The Comparison Virus."**
 
 It investigates how the pervasive, modern urge to compare ourselves to peers—in academics, careers, and social life—can be both a powerful motivator for self-improvement and a significant source of psychological distress.
 
@@ -30,6 +30,14 @@ The "Comparison Virus" is a modern label for a timeless human tendency. This pro
 
 ---
 
+## 🚀 Live Demo
+
+The infographic is deployed and can be viewed live at:
+
+**[https://aryan1612.github.io/Indian_Psychology/](https://aryan1612.github.io/Indian_Psychology/)**
+
+---
+
 ## 🖥️ Infographic Structure
 
 The webpage is divided into three main sections:
@@ -40,7 +48,7 @@ The webpage is divided into three main sections:
 
 ---
 
-## 🚀 How to View
+## 💻 How to View Locally
 
 This is a static website built with HTML and CSS. No setup is required.
 
