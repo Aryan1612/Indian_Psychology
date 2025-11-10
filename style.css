@@ -1,16 +1,17 @@
 /* --- Global Styles & Typography --- */
 :root {
-    --font-heading: 'Fredoka One', cursive; /* More playful/infographic-like */
+    --font-heading: 'Fredoka One', cursive;
     --font-body: 'Lato', sans-serif;
     --color-text: #333;
     
-    /* --- NEW COMPLIMENTARY COLOR PALETTE --- */
-    --color-primary: #5c5fA8;     /* A purple-blue that compliments both images */
-    --color-motivation: #E91E63; /* A vibrant pink from the 'Motivation' image */
-    --color-misery: #7b1fa2;     /* A deep purple from the 'Misery' image */
-    --bg-light: #fdfcf7;         /* NEW: A very light, warm, creamy background */
+    /* --- NEW COLOR PALETTE (from trap.jpg) --- */
+    --color-primary: #FBC02D;     /* Gold (from cage) */
+    --color-motivation: #E91E63; /* Pink (from confetti/icons, kept) */
+    --color-misery: #7b1fa2;     /* Purple (from background, kept) */
+    --color-neutral-accent: #03A9F4; /* Cyan (from 'like' icons) */
+    --bg-light: #fdfcf7;         
     --bg-white: #ffffff;
-    --border-light: #e8e8e3;     /* Updated border to match new bg */
+    --border-light: #e8e8e3;     
     --shadow-light: rgba(0,0,0,0.07);
 }
 
@@ -22,42 +23,42 @@
 
 body {
     font-family: var(--font-body);
-    font-size: 16px;
+    font-size: 16px; /* Reduced slightly for density */
     line-height: 1.6;
     color: var(--color-text);
-    background-color: var(--bg-light); /* UPDATED BACKGROUND */
+    background-color: var(--bg-light); 
 }
 
 h1, h2, h3 {
     font-family: var(--font-heading);
-    font-weight: normal; /* Fredoka One is inherently bold */
+    font-weight: normal; 
     margin-bottom: 0.75rem;
     line-height: 1.2;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2.8rem; /* Reduced */
     color: var(--bg-white);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Reduced */
     color: var(--color-primary);
     border-bottom: 3px solid var(--border-light);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
+    padding-bottom: 0.25rem; /* Reduced */
+    margin-bottom: 1rem; /* Reduced */
     text-align: center;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem; /* Reduced */
 }
 
 p {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem; /* Reduced */
 }
 
 ul {
@@ -66,9 +67,9 @@ ul {
 }
 
 li {
-    margin-bottom: 1.2rem;
-    background-color: var(--bg-white); /* Keep list items white for contrast */
-    padding: 1rem;
+    margin-bottom: 1rem; /* Reduced */
+    background-color: var(--bg-white);
+    padding: 0.8rem; /* Reduced */
     border-radius: 6px;
     border: 1px solid var(--border-light);
     box-shadow: 0 2px 5px var(--shadow-light);
@@ -83,19 +84,19 @@ li {
 
 /* --- SECTION 1: Banner --- */
 .banner {
-    /* Updated gradient to use new primary color */
-    background: linear-gradient(135deg, var(--color-primary) 0%, #8c90f0 100%);
+    /* UPDATED GRADIENT to match image */
+    background: linear-gradient(135deg, var(--color-neutral-accent) 0%, var(--color-misery) 100%);
     color: var(--bg-white);
-    padding: 4rem 0;
+    padding: 2.5rem 0; /* Reduced */
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem; /* Reduced */
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
 
 .banner p {
-    font-size: 1.15rem;
+    font-size: 1.1rem; /* Reduced */
     line-height: 1.5;
     max-width: 800px;
     margin-left: auto;
@@ -105,8 +106,8 @@ li {
 }
 .banner p.intro-question {
     font-weight: bold;
-    font-size: 1.25rem;
-    margin-top: 1.5rem;
+    font-size: 1.2rem; /* Reduced */
+    margin-top: 1rem; /* Reduced */
 }
 
 
@@ -115,38 +116,38 @@ li {
     background-color: var(--bg-white);
     border: 1px solid var(--border-light);
     border-radius: 12px;
-    padding: 2.5rem;
+    padding: 2rem; /* Reduced */
     box-shadow: 0 8px 20px var(--shadow-light);
     display: flex;
-    flex-direction: column; /* Stack image and text */
-    align-items: center; /* Center content */
+    flex-direction: column; 
+    align-items: center; 
 }
 
 .image-container {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Reduced */
     width: 100%;
-    max-width: 400px; /* Control image size */
+    max-width: 400px; 
 }
 .image-container img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px; /* Slightly rounded image corners */
+    border-radius: 8px; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .key-message {
     font-family: var(--font-heading);
     font-style: normal;
-    font-size: 1.2rem;
-    color: var(--color-primary);
+    font-size: 1.1rem; /* Reduced */
+    color: var(--color-primary); /* Uses new gold */
     text-align: center;
-    margin-bottom: 2rem;
-    background-color: #f5f5fa; /* Light purple-grey, from new primary */
-    padding: 0.8rem 1.5rem;
+    margin-bottom: 1.5rem; /* Reduced */
+    background-color: #FFF8E1; /* Light gold bg */
+    padding: 0.6rem 1.2rem; /* Reduced */
     border-radius: 50px;
     display: inline-block;
-    border: 1px solid #e0e0ed;
+    border: 1px solid #FFECB3; /* Light gold border */
 }
 
 /* --- Student Example Styling --- */
@@ -156,9 +157,9 @@ blockquote {
     font-size: 0.9rem;
     color: #555;
     background-color: #fafafa;
-    border-left: 5px solid; /* Color added by JS or specific CSS */
-    padding: 0.75rem 1.25rem;
-    margin-top: 0.8rem;
+    border-left: 5px solid;
+    padding: 0.6rem 1rem; /* Reduced */
+    margin-top: 0.6rem; /* Reduced */
     border-radius: 0 6px 6px 0;
 }
 
@@ -166,7 +167,7 @@ blockquote {
 .dual-comparison {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem; /* Increased gap */
+    gap: 2rem; /* Reduced */
 }
 
 /* Visual cue for Motivation vs. Misery (NEW COLORS) */
@@ -186,37 +187,48 @@ blockquote {
     border-left-color: var(--color-motivation);
 }
 
-/* --- SECTION 4: Amplifiers (Full Width) --- */
-#amplifiers {
-    margin-top: 3rem; /* Increased margin */
+/* This creates the 2-column layout for the examples list */
+#misery ul,
+#motivation ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 1rem; /* Reduced */
+    width: 100%; 
 }
 
+
+/* --- SECTION 4: Amplifiers (Full Width) --- */
+#amplifiers {
+    margin-top: 2rem; /* Reduced */
+}
+
+/* UPDATED to use new Cyan color */
 #amplifiers h2 {
-    color: #6c757d; /* A neutral gray */
-    border-bottom-color: #6c757d;
+    color: var(--color-neutral-accent);
+    border-bottom-color: var(--color-neutral-accent);
 }
 #amplifiers li {
     background-color: #fafafa;
 }
 #amplifiers blockquote {
-    border-left-color: #6c757d;
+    border-left-color: var(--color-neutral-accent);
 }
 
 #amplifiers ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem; /* Reduced */
     margin-top: 1.5rem;
 }
 
 
 /* --- SECTION 5: Footer --- */
 footer {
-    background-color: #2c3e50; /* Darker, professional blue/grey */
+    background-color: #2c3e50;
     color: #e0e6eb;
     text-align: center;
-    padding: 3.5rem 0;
-    margin-top: 4rem;
+    padding: 2.5rem 0; /* Reduced */
+    margin-top: 2.5rem; /* Reduced */
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
@@ -229,7 +241,7 @@ footer p {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 1.1rem;
+    font-size: 1.05rem; /* Reduced */
     line-height: 1.5;
 }
 
@@ -242,7 +254,7 @@ footer p {
         font-size: 1.6rem;
     }
     .banner {
-        padding: 2.5rem 0;
+        padding: 2rem 0; /* Reduced */
     }
     .banner p {
         font-size: 1rem;
@@ -269,5 +281,12 @@ footer p {
     }
     blockquote {
         font-size: 0.85rem;
+    }
+
+    /* This stacks the example lists back to 1 column on mobile */
+    #misery ul,
+    #motivation ul {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 }
