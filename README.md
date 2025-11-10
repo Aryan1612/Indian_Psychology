@@ -3,9 +3,9 @@
 ## 🧠 Project by: Cognitive Resonance
 
 * Aryan Arora (Team Leader)
+* Kunal Patil
 * Flora
 * Himanshu
-* Kunal Patil
 * Prabhanjan
 * Saksham
 
