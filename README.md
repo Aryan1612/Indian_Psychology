@@ -3,9 +3,9 @@
 ## 🧠 Project by: Cognitive Resonance
 
 * Aryan Arora
+* Kunal Patil
 * Flora
 * Himanshu
-* Kunal Patil
 * Prabhanjan
 * Saksham
 
