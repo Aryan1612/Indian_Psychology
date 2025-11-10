@@ -128,13 +128,17 @@ li {
     width: 100%;
     max-width: 400px; 
 }
-.image-container img {
+
+/* --- THIS IS THE CHANGED RULE --- */
+.image-container img,
+.image-container video {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 8px; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+/* --- END OF CHANGE --- */
 
 .key-message {
     font-family: var(--font-heading);
