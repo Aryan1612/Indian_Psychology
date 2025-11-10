@@ -1,0 +1,273 @@
+/* --- Global Styles & Typography --- */
+:root {
+    --font-heading: 'Fredoka One', cursive; /* More playful/infographic-like */
+    --font-body: 'Lato', sans-serif;
+    --color-text: #333;
+    
+    /* --- NEW COMPLIMENTARY COLOR PALETTE --- */
+    --color-primary: #5c5fA8;     /* A purple-blue that compliments both images */
+    --color-motivation: #E91E63; /* A vibrant pink from the 'Motivation' image */
+    --color-misery: #7b1fa2;     /* A deep purple from the 'Misery' image */
+    --bg-light: #fdfcf7;         /* NEW: A very light, warm, creamy background */
+    --bg-white: #ffffff;
+    --border-light: #e8e8e3;     /* Updated border to match new bg */
+    --shadow-light: rgba(0,0,0,0.07);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--bg-light); /* UPDATED BACKGROUND */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: normal; /* Fredoka One is inherently bold */
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--bg-white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--border-light);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 1.2rem;
+    background-color: var(--bg-white); /* Keep list items white for contrast */
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+/* --- Layout Containers --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- SECTION 1: Banner --- */
+.banner {
+    /* Updated gradient to use new primary color */
+    background: linear-gradient(135deg, var(--color-primary) 0%, #8c90f0 100%);
+    color: var(--bg-white);
+    padding: 4rem 0;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.banner p {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.75rem;
+    opacity: 0.95;
+}
+.banner p.intro-question {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+
+/* --- Shared Card Style --- */
+.card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 20px var(--shadow-light);
+    display: flex;
+    flex-direction: column; /* Stack image and text */
+    align-items: center; /* Center content */
+}
+
+.image-container {
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 400px; /* Control image size */
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Slightly rounded image corners */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.key-message {
+    font-family: var(--font-heading);
+    font-style: normal;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    background-color: #f5f5fa; /* Light purple-grey, from new primary */
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    display: inline-block;
+    border: 1px solid #e0e0ed;
+}
+
+/* --- Student Example Styling --- */
+blockquote {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #555;
+    background-color: #fafafa;
+    border-left: 5px solid; /* Color added by JS or specific CSS */
+    padding: 0.75rem 1.25rem;
+    margin-top: 0.8rem;
+    border-radius: 0 6px 6px 0;
+}
+
+/* --- SECTIONS 2 & 3: Two-Column Layout --- */
+.dual-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem; /* Increased gap */
+}
+
+/* Visual cue for Motivation vs. Misery (NEW COLORS) */
+#misery h2 {
+    color: var(--color-misery);
+    border-bottom-color: var(--color-misery);
+}
+#misery blockquote {
+    border-left-color: var(--color-misery);
+}
+
+#motivation h2 {
+    color: var(--color-motivation);
+    border-bottom-color: var(--color-motivation);
+}
+#motivation blockquote {
+    border-left-color: var(--color-motivation);
+}
+
+/* --- SECTION 4: Amplifiers (Full Width) --- */
+#amplifiers {
+    margin-top: 3rem; /* Increased margin */
+}
+
+#amplifiers h2 {
+    color: #6c757d; /* A neutral gray */
+    border-bottom-color: #6c757d;
+}
+#amplifiers li {
+    background-color: #fafafa;
+}
+#amplifiers blockquote {
+    border-left-color: #6c757d;
+}
+
+#amplifiers ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+
+/* --- SECTION 5: Footer --- */
+footer {
+    background-color: #2c3e50; /* Darker, professional blue/grey */
+    color: #e0e6eb;
+    text-align: center;
+    padding: 3.5rem 0;
+    margin-top: 4rem;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+}
+footer h3 {
+    color: var(--bg-white);
+    margin-bottom: 1rem;
+}
+footer p {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    h2 {
+        font-size: 1.6rem;
+    }
+    .banner {
+        padding: 2.5rem 0;
+    }
+    .banner p {
+        font-size: 1rem;
+    }
+    .banner p.intro-question {
+        font-size: 1.1rem;
+    }
+    .card {
+        padding: 1.5rem;
+    }
+
+    /* Stack the two main columns on top of each other */
+    .dual-comparison {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    #amplifiers ul {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    li {
+        padding: 0.8rem;
+    }
+    blockquote {
+        font-size: 0.85rem;
+    }
+}
